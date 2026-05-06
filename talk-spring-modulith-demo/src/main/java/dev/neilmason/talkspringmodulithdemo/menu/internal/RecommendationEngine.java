@@ -1,8 +1,8 @@
 package dev.neilmason.talkspringmodulithdemo.menu.internal;
 
+import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendation;
 import dev.neilmason.talkspringmodulithdemo.OrderRequest;
 import dev.neilmason.talkspringmodulithdemo.Vibe;
-import dev.neilmason.talkspringmodulithdemo.menu.CoffeeRecommendation;
 import org.springframework.stereotype.Component;
 
 @Component

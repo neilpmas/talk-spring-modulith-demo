@@ -1,5 +1,6 @@
 package dev.neilmason.talkspringmodulithdemo.menu;
 
+import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendation;
 import dev.neilmason.talkspringmodulithdemo.OrderRequest;
 import dev.neilmason.talkspringmodulithdemo.menu.internal.RecommendationEngine;
 import org.springframework.stereotype.Service;
