@@ -18,12 +18,6 @@ class PantryListener {
     @ApplicationModuleListener
     void on(OrderPlaced event) throws InterruptedException {
         Thread.sleep(2000); // DEMO: makes the async flip visible on stage — do not remove
-        log.info("Pantry: dispensing {} for order [time={}, hoursCoding={}, onDeadline={}, vibe={}]",
-            event.recommendation().coffee(),
-            event.request().time(),
-            event.request().hoursCoding(),
-            event.request().onDeadline(),
-            event.request().vibe()
-        );
+        log.info("Pantry: dispensing {}", event.recommendation().coffee());
     }
 }

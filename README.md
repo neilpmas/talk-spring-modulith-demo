@@ -83,4 +83,3 @@ One annotation. The publisher (`OrderController`) doesn't change.
 | `FINE` | Everything is fine |
 | `STRESSED` | It's getting there |
 | `EVERYTHING_IS_ON_FIRE` | It's really getting there |
-| `GITHUB_STAR` | Someone starred your repo at 3am |

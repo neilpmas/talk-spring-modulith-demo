@@ -1,7 +1,6 @@
 package dev.neilmason.talkspringmodulithdemo.menu;
 
-import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendation;
-import dev.neilmason.talkspringmodulithdemo.OrderRequest;
+import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendationDTO;
 import dev.neilmason.talkspringmodulithdemo.menu.internal.RecommendationEngine;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public class MenuService {
         this.engine = engine;
     }
 
-    public CoffeeRecommendation recommend(OrderRequest request) {
-        return engine.recommend(request);
+    public CoffeeRecommendationDTO recommend(CoffeeOrderDTO order) {
+        return engine.recommend(order);
     }
 }

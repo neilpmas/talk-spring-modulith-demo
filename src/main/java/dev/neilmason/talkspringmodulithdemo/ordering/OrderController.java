@@ -1,7 +1,7 @@
 package dev.neilmason.talkspringmodulithdemo.ordering;
 
-import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendation;
-import dev.neilmason.talkspringmodulithdemo.OrderRequest;
+import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendationDTO;
+import dev.neilmason.talkspringmodulithdemo.menu.CoffeeOrderDTO;
 import dev.neilmason.talkspringmodulithdemo.menu.MenuService;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +22,9 @@ public class OrderController {
     }
 
     @PostMapping
-    public CoffeeRecommendation order(@RequestBody OrderRequest request) {
-        CoffeeRecommendation recommendation = menuService.recommend(request);
-        events.publishEvent(new OrderPlaced(request, recommendation));
+    public CoffeeRecommendationDTO order(@RequestBody CoffeeOrderDTO order) {
+        CoffeeRecommendationDTO recommendation = menuService.recommend(order);
+        events.publishEvent(new OrderPlaced(recommendation));
         return recommendation;
     }
 }
