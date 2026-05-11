@@ -1,0 +1,13 @@
+### Place an order — demo request
+# SYNC:  remove @Async from PantryListener — response takes 2s, pantry log appears before it returns
+# ASYNC: add @Async back — response immediate, pantry log appears 2s later
+
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "time": "3am",
+  "hoursCoding": 6,
+  "onDeadline": true,
+  "vibe": "EVERYTHING_IS_ON_FIRE"
+}
