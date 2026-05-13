@@ -4,7 +4,7 @@ import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendationDTO;
 import dev.neilmason.talkspringmodulithdemo.menu.CoffeeOrderDTO;
 import dev.neilmason.talkspringmodulithdemo.menu.MenuService;
 // DEMO: uncomment to show verify() failing — BadPublicApi is public but internal
-// import dev.neilmason.talkspringmodulithdemo.pantry.internal.BadPublicApi;
+// import dev.neilmason.talkspringmodulithdemo.pantry.BadPublicApi;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
