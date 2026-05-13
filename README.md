@@ -43,7 +43,7 @@ curl -s -X POST http://localhost:8080/order \
 
 ---
 
-## Demo 1 — Module verification + C4 diagram
+## Module verification + C4 diagram
 
 Run the modularity tests:
 
