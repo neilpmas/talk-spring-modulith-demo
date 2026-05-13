@@ -88,8 +88,8 @@ System_Boundary("TalkSpringModulithDemoApplication_boundary", "TalkSpringModulit
   }
 }
 
-Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "uses", $techn="", $tags="", $link="")
 Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "listens to", $techn="", $tags="", $link="")
+Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "uses", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 hide stereotypes
@@ -120,12 +120,10 @@ System_Boundary("TalkSpringModulithDemoApplication_boundary", "TalkSpringModulit
   Container_Boundary("TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
     Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "Menu", $techn="Module", $descr="", $tags="", $link="")
     Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "Ordering", $techn="Module", $descr="", $tags="", $link="")
-    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, "Pantry", $techn="Module", $descr="", $tags="", $link="")
   }
 }
 
 Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "uses", $techn="", $tags="", $link="")
-Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "listens to", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 hide stereotypes
