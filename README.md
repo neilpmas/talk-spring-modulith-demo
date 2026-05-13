@@ -60,16 +60,153 @@ Run the modularity tests:
 
 The diagram only generates if the code follows the rules. That's the point.
 
+### Application overview
+
+```plantuml
+@startuml
+title <size:24>TalkSpringModulithDemoApplication</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System_Boundary("TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+  Container_Boundary("TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "Menu", $techn="Module", $descr="", $tags="", $link="")
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "Ordering", $techn="Module", $descr="", $tags="", $link="")
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, "Pantry", $techn="Module", $descr="", $tags="", $link="")
+  }
+}
+
+Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "uses", $techn="", $tags="", $link="")
+Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "listens to", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml
+```
+
+### Ordering module
+
+```plantuml
+@startuml
+title <size:24>Ordering</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System_Boundary("TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+  Container_Boundary("TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "Menu", $techn="Module", $descr="", $tags="", $link="")
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "Ordering", $techn="Module", $descr="", $tags="", $link="")
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, "Pantry", $techn="Module", $descr="", $tags="", $link="")
+  }
+}
+
+Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "uses", $techn="", $tags="", $link="")
+Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "listens to", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml
+```
+
+### Menu module
+
+```plantuml
+@startuml
+title <size:24>Menu</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System_Boundary("TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+  Container_Boundary("TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Menu, "Menu", $techn="Module", $descr="", $tags="", $link="")
+  }
+}
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml
+```
+
+### Pantry module
+
+```plantuml
+@startuml
+title <size:24>Pantry</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+System_Boundary("TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+  Container_Boundary("TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication_boundary", "TalkSpringModulithDemoApplication", $tags="") {
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "Ordering", $techn="Module", $descr="", $tags="", $link="")
+    Component(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, "Pantry", $techn="Module", $descr="", $tags="", $link="")
+  }
+}
+
+Rel(TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Pantry, TalkSpringModulithDemoApplication.TalkSpringModulithDemoApplication.Ordering, "listens to", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml
+```
+
 ---
 
-## Demo 2 — Sync → Async event handling
+## Demo — Sync → Async event handling
 
 `PantryListener` has a `Thread.sleep(2000)` in it to make the async flip visible.
 
-**Sync (default for the demo — remove `@Async` from `PantryListener.on()`):**
+**Sync (starting state — `@EventListener`):**
 POST an order. The HTTP response takes 2 seconds. The pantry log appears *before* the response returns — same thread, the handler runs inline.
 
-**Async (add `@Async` back):**
+**Async (change to `@ApplicationModuleListener`):**
 POST again. Response is immediate. The pantry log appears 2 seconds *after* the response — different thread, handler runs independently.
 
 One annotation. The publisher (`OrderController`) doesn't change.

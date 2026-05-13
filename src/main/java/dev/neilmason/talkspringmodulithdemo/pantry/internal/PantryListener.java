@@ -14,8 +14,9 @@ public class PantryListener {
 
     // DEMO: replace @EventListener with @ApplicationModuleListener to flip sync → async
     @EventListener
+//    @ApplicationModuleListener
     void on(OrderPlaced event) throws InterruptedException {
         Thread.sleep(2000); // makes the async flip visible on stage — do not remove
-        log.info("Pantry: dispensing {}", event.recommendation().coffee());
+        log.info("Pantry: need to refresh {} ingredients", event.recommendation().coffee());
     }
 }
