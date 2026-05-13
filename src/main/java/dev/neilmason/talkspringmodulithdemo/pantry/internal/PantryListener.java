@@ -16,7 +16,11 @@ public class PantryListener {
     @EventListener
 //    @ApplicationModuleListener
     void on(OrderPlaced event) throws InterruptedException {
-        Thread.sleep(2000); // makes the async flip visible on stage — do not remove
+        Thread.sleep(1000);
+        log.info("Pantry: Looking at Hacker News...");
+        Thread.sleep(1000);
+        log.info("Pantry: Thinking about new JVM talks...");
+        Thread.sleep(1000);
         log.info("Pantry: need to refresh {} ingredients", event.recommendation().coffee());
     }
 }
