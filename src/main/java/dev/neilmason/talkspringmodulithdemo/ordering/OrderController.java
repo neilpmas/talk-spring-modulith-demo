@@ -1,7 +1,7 @@
 package dev.neilmason.talkspringmodulithdemo.ordering;
 
-import dev.neilmason.talkspringmodulithdemo.CoffeeRecommendationDTO;
 import dev.neilmason.talkspringmodulithdemo.menu.CoffeeOrderDTO;
+import dev.neilmason.talkspringmodulithdemo.menu.CoffeeRecommendationDTO;
 import dev.neilmason.talkspringmodulithdemo.menu.MenuService;
 // DEMO: uncomment to show verify() failing — BadPublicApi is public but internal
 // import dev.neilmason.talkspringmodulithdemo.pantry.BadPublicApi;
@@ -30,7 +30,7 @@ public class OrderController {
     @PostMapping
     public CoffeeRecommendationDTO order(@RequestBody CoffeeOrderDTO order) {
         CoffeeRecommendationDTO recommendation = menuService.recommend(order);
-        events.publishEvent(new OrderPlaced(recommendation));
+        events.publishEvent(new OrderPlaced(recommendation.coffee()));
         // DEMO: uncomment to show verify() failing — BadPublicApi is public but internal
 //         new BadPublicApi().doSomething();
         log.info("Menu: recommending {} — {}", recommendation.coffee(), recommendation.reason());

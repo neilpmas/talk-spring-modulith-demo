@@ -21,6 +21,6 @@ public class PantryListener {
         Thread.sleep(1000);
         log.info("Pantry: Thinking about new JVM talks...");
         Thread.sleep(1000);
-        log.info("Pantry: need to refresh {} ingredients", event.recommendation().coffee());
+        log.info("Pantry: need to refresh {} ingredients", event.coffee());
     }
 }
